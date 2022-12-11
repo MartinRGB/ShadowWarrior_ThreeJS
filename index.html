@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>ShadowWarrior</title>
+		<meta name="author" content="modified by MartinRGB" />
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+	</head>
+	<body oncontextmenu="return false;">
+		<main>
+			<div class="content" id="threejs-container">
+				<canvas class="scene scene--full" id="scene"></canvas>
+
+				<div class="upload_area">
+					<div class="upload-image btn">
+					  <span>上传图片</span>
+					  <input id="imageLoader" class="upload-image-input" type="file">
+					  <canvas id="blurCanvas" width="512" height="512"></canvas>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<!-- 动画库 Tweenmax -->
+		<script src="js/animation/TweenMax.min.js"></script>
+		<script src="js/animation/rebound.js"></script>
+
+
+		<!-- 3D库 Three -->
+		<script src="js/three/three.js"></script>
+		<!-- Three 工具类 —— 鼠标控制三维观察点 -->
+		<script src="js/three/OrbitControls.js"></script>
+		<!-- Three 工具类 —— RenderPass 库 -->
+		<script src="js/three/ShaderLoader.min.js"></script>
+		<script src="js/three/EffectComposer.js"></script>
+		<script src="js/three/ShaderPass.js"></script>
+		<script src="js/three/RenderPass.js"></script>
+		<script src="js/three/CopyShader.js"></script>
+
+		<!-- Three 工具类 —— 模型读取（本案例无用） -->
+		<script src="js/three/OBJLoader.js"></script>
+		<script src="js/three/ColladaLoader.js"></script>
+		
+
+		<!-- 其他杂类 -->
+		<script src="js/util/fulltilt.js"></script>
+		<script src='js/util/dat.gui.min.js'></script>
+		<script src="js/util/Gimbal.js"></script>
+		<script src="js/util/jquery-2.1.0.min.js"></script>
+		<script src="js/util/stats.js"></script>
+		<script src="js/util/stackblur.min.js"></script>
+
+		<!-- 背景Shader P.S 本来背景、环境光、光影效果可以一个 Shader 解决，后来 环境光、背景效果出现 Bug，变成 3 个 Shader -->
+		<script data-src="./shader/offplane_background_vert.glsl" data-name="offplane_background" type="x-shader/x-vertex"></script>
+		<script data-src="./shader/offplane_background_frag.glsl" data-name="offplane_background" type="x-shader/x-fragment"></script>
+		<!-- 环境光Shader P.S 本来背景、环境光、光影效果可以一个 Shader 解决，后来 环境光、背景效果出现 Bug，变成 3 个 Shader -->
+		<script data-src="./shader/offplane_env_vert.glsl" data-name="offplane_env" type="x-shader/x-vertex"></script>
+		<script data-src="./shader/offplane_env_frag.glsl" data-name="offplane_env" type="x-shader/x-fragment"></script>
+		<!-- 光影Shader P.S 本来背景、环境光、光影效果可以一个 Shader 解决，后来 环境光、背景效果出现 Bug，变成 3 个 Shader -->
+		<script data-src="./shader/plane_vert.glsl" data-name="plane" type="x-shader/x-vertex"></script>
+		<script data-src="./shader/plane_frag.glsl" data-name="plane" type="x-shader/x-fragment"></script>
+		
+		<!-- 主体逻辑 -->
+		<script src="js/main.js"></script>
+
+	</body>
+</html>
